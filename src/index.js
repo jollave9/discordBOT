@@ -13,6 +13,7 @@ const PREFIX = '$'
 
 client.on('message', (message) => {
     if (message.author.bot) return
+
     if (message.content.startsWith(PREFIX)) {
         const [CMD, ...args] = message.content.trim().substring(PREFIX.length).split(/\s+/)
         switch (CMD) {
@@ -29,14 +30,14 @@ client.on('message', (message) => {
                     case 'fact':
                         axios.get('https://useless-facts.sameerkumar.website/api')
                             .then((res) => {
-                                message.channel.send('Here\'s a fact for you:\n' + res.data.data)
+                                message.reply('Here\'s a fact for you:\n\n' + res.data.data)
                             })
                             .catch(e => console.log(e))
                         break;
                     case 'joke':
                         axios.get('https://official-joke-api.appspot.com/jokes/random')
                             .then((res) => {
-                                message.channel.send('Here\'s a joke for you\n' + res.data.setup + '\n' + res.data.punchline)
+                                message.reply('Here\'s a joke for you\n\n' + res.data.setup + '\n' + res.data.punchline)
                             })
                             .catch(e => console.log(e))
                         break;
