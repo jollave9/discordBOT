@@ -10,7 +10,7 @@ const client = new Client()
 //     client.send()
 // })
 const PREFIX = '$'
-
+console.log('running')
 client.on('message', (message) => {
     if (message.author.bot) return
 
